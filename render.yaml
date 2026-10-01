@@ -1,10 +1,3 @@
-databases:
-  - name: apex-trades-db
-    databaseName: apex_trades
-    user: apex_trades
-    plan: free
-    postgresMajorVersion: "16"
-
 services:
   - type: web
     name: apex-trades
@@ -18,9 +11,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: DATABASE_URL_POSTGRESQL
-        fromDatabase:
-          name: apex-trades-db
-          property: connectionString
+        sync: false
       - key: JWT_SECRET
         generateValue: true
       - key: ADMIN_EMAIL

@@ -28,9 +28,9 @@ Open <http://localhost:5173>. The API runs at <http://localhost:4000>; `GET /api
 
 ## Public deployment on Render
 
-The included `render.yaml` deploys the website and API together, with a managed PostgreSQL database. In Render, create a new Blueprint from this GitHub repository and set `ADMIN_EMAIL` and `ADMIN_PASSWORD` when prompted. Render generates a private `JWT_SECRET`; do not share or commit it. Once deployment completes, open the public URL shown for the `apex-trades` web service.
+The included `render.yaml` deploys the website and API together on Render and uses an external PostgreSQL database. Create a free PostgreSQL project with a provider such as Neon, then create a Render Blueprint from this GitHub repository. Enter the provider's PostgreSQL connection string, `ADMIN_EMAIL`, and `ADMIN_PASSWORD` in Render when prompted. Keep the connection string and password private; Render generates a private `JWT_SECRET`. Once deployment completes, open the public URL shown for the `apex-trades` web service.
 
-The free web service uses ephemeral storage: files uploaded through the owner console can be lost when the service restarts or redeploys. Use private persistent object storage before relying on uploads in production. Configure Stripe and SMTP separately if you need live payments and email-based password resets.
+The free Render web service uses ephemeral storage: files uploaded through the owner console can be lost when the service restarts or redeploys. Use private persistent object storage before relying on uploads in production. Configure Stripe and SMTP separately if you need live payments and email-based password resets. Free database providers may pause inactive projects or have usage limits; review the provider's current terms.
 
 ### Local demo access
 
