@@ -4,7 +4,7 @@ services:
     runtime: node
     plan: free
     region: oregon
-    buildCommand: npm ci && npm run db:generate:postgres && npm run build
+    buildCommand: npm ci --include=dev && npm run db:generate:postgres && npm run build
     startCommand: npm run db:push:postgres && npm start
     healthCheckPath: /api/health
     envVars:
