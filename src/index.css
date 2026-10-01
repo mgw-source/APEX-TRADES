@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'DM Sans', 'SF Pro Text', sans-serif;
+  color: #e5e5df;
+  background: #111310;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --ink: #111310;
+  --panel: rgba(27, 29, 26, .78);
+  --panel-solid: #1b1d1a;
+  --line: rgba(231, 232, 221, .105);
+  --muted: #8d9287;
+  --text: #e5e5df;
+  --gold: #d4af37;
+  --gold-bright: #e8ca70;
+  --green: #a7c9a6;
+  --red: #d88d7b;
+}
+
+* { box-sizing: border-box; }
+html { min-width: 320px; scroll-behavior: smooth; }
+body { min-width: 320px; margin: 0; }
+button, input, select { font: inherit; }
+button { color: inherit; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+::selection { background: rgba(212, 175, 55, .35); color: white; }
+#root { min-height: 100vh; }

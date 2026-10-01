@@ -1,0 +1,15 @@
+.admin-grid{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:13px}
+.admin-grid .admin-form-card{width:100%;max-width:none}
+.admin-members-heading h2{margin:7px 0;font-family:Manrope,sans-serif;font-size:16px;font-weight:500}
+.admin-member-list{display:grid;margin-top:12px}
+.admin-member-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 0;border-top:1px solid var(--line)}
+.admin-member-row>div{display:grid;gap:4px}
+.admin-member-row strong{font-size:9px;font-weight:500}
+.admin-member-row span{color:#84887d;font-size:8px}
+.admin-member-row select{max-width:110px;height:30px;padding:0 7px;border:1px solid var(--line);border-radius:3px;background:#1b1d1a;color:#c6c8be;font-size:8px}
+.admin-message{margin-top:15px}
+.course-video{width:100%;max-height:155px;margin-top:9px;border-radius:3px;background:#101210}
+.course-description{margin-top:8px;color:#95998e;font-size:8px;line-height:1.6}
+.empty-trades{padding:12px 8px;color:#85897e;font-size:9px}
+.reset-token{display:block;overflow-wrap:anywhere;padding:10px;margin-top:13px;background:rgba(0,0,0,.25);color:var(--gold-bright);font-size:9px}
+@media(max-width:700px){.admin-grid{grid-template-columns:1fr}}
