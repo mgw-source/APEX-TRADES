@@ -26,6 +26,12 @@ npm run dev
 
 Open <http://localhost:5173>. The API runs at <http://localhost:4000>; `GET /api/health` reports its status. `npm run dev` starts both processes together. `npm run build` type-checks both apps and creates the production client/API build. `npm start` serves the compiled API from `dist/server`.
 
+## Public deployment on Render
+
+The included `render.yaml` deploys the website and API together, with a managed PostgreSQL database. In Render, create a new Blueprint from this GitHub repository and set `ADMIN_EMAIL` and `ADMIN_PASSWORD` when prompted. Render generates a private `JWT_SECRET`; do not share or commit it. Once deployment completes, open the public URL shown for the `apex-trades` web service.
+
+The free web service uses ephemeral storage: files uploaded through the owner console can be lost when the service restarts or redeploys. Use private persistent object storage before relying on uploads in production. Configure Stripe and SMTP separately if you need live payments and email-based password resets.
+
 ### Local demo access
 
 Choose **Try member demo** from the log-in dialog. It creates a local demo member and a 30-day demo subscription without payment details. The local owner account is created from `ADMIN_EMAIL` and `ADMIN_PASSWORD` the first time the API starts; configure those values before launch to access the owner panel.

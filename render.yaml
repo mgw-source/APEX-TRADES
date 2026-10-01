@@ -1,0 +1,29 @@
+databases:
+  - name: apex-trades-db
+    databaseName: apex_trades
+    user: apex_trades
+    plan: free
+    postgresMajorVersion: "16"
+
+services:
+  - type: web
+    name: apex-trades
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm ci && npm run db:generate:postgres && npm run build
+    startCommand: npm run db:push:postgres && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL_POSTGRESQL
+        fromDatabase:
+          name: apex-trades-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false

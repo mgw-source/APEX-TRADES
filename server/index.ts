@@ -19,7 +19,7 @@ import { prisma, seedContent } from './seed.js'
 
 const app = express()
 const httpServer = createServer(app)
-const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173'
+const frontendUrl = process.env.FRONTEND_URL || process.env.RENDER_EXTERNAL_URL || 'http://localhost:5173'
 const port = Number(process.env.PORT || 4000)
 const jwtSecret = process.env.JWT_SECRET || (process.env.NODE_ENV === 'production' ? '' : 'local-development-secret-change-before-deploying')
 const isProduction = process.env.NODE_ENV === 'production'
@@ -312,6 +312,13 @@ app.patch('/api/admin/users/:id/subscription', requireAuth, requireAdmin, asyncR
   response.json({ ok: true })
 }))
 
+app.use(express.static(resolve('dist')))
+app.use((request, response, next) => {
+  if (request.method !== 'GET' || request.path.startsWith('/api')) return next()
+  response.sendFile(resolve('dist/index.html'), (error) => {
+    if (error) next(error)
+  })
+})
 app.use((_request, response) => response.status(404).json({ error: 'Route not found.' }))
 app.use((error: unknown, _request: Request, response: Response, _next: NextFunction) => {
   console.error(error)
